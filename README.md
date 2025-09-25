@@ -110,11 +110,24 @@ nltk.download('stopwords')
 
 ### 🎯 Quick Start
 
+#### Local Development
 ```bash
 streamlit run test1.py
 ```
-
 Navigate to `http://localhost:8501` in your browser.
+
+#### Vercel Deployment
+The landing page is deployed on Vercel for easy sharing:
+```bash
+vercel --prod
+```
+
+#### Streamlit Cloud Deployment
+For the full interactive app, deploy to Streamlit Cloud:
+1. Fork this repository
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Connect your GitHub repository
+4. Deploy `test1.py` as the main file
 
 ## 📖 Usage Guide
 
