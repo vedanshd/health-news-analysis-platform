@@ -1,2 +1,44 @@
-# Minimal requirements for Vercel deployment (landing page only)
+# Core Web Framework
+streamlit>=1.28.0
+
+# Machine Learning & NLP
+transformers>=4.30.0
+sentence-transformers>=2.2.0
+torch>=2.0.0
+nltk>=3.8.0
+scikit-learn>=1.3.0
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Evaluation Metrics
+rouge-score>=0.1.2
+
+# Web Scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# Visualization
+plotly>=5.15.0
+matplotlib>=3.7.0
+wordcloud>=1.9.0
+
+# API Integration
+huggingface-hub>=0.16.0
+
+# Environment Management
+python-dotenv>=1.0.0
+
+# Optional Performance Enhancement
+watchdog>=3.0.0
+
+# Text Processing
+textstat>=0.7.0
+spacy>=3.6.0
+
+# Additional utilities
+tqdm>=4.65.0
+
+# Web Framework for Vercel deployment
 flask>=2.3.0

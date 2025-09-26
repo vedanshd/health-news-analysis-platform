@@ -541,8 +541,14 @@ class ModelComparator:
         
         return recommendations
 
-load_dotenv()
-HF_TOKEN = os.getenv("HF_TOKEN")
+# Load configuration
+try:
+    # Try Streamlit secrets first (for cloud deployment)
+    HF_TOKEN = st.secrets["HF_TOKEN"]
+except:
+    # Fallback to environment variables (for local development)
+    load_dotenv()
+    HF_TOKEN = os.getenv("HF_TOKEN")
 
 st.set_page_config(page_title="Advanced Health News Analysis Platform", layout="wide")
 st.title("🏥 Advanced Health News Analysis Platform")

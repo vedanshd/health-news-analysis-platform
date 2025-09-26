@@ -93,11 +93,16 @@ pip install -r requirements.txt
 ```
 
 4. **Setup environment variables**
-Copy the environment template and add your tokens:
+
+For local development:
 ```bash
 cp .env.example .env
 # Edit .env and add your Hugging Face token
 ```
+
+For Streamlit Cloud deployment:
+- Add your tokens in the Streamlit Cloud secrets management interface
+- Use the same key names as in `.env.example`
 
 Get your Hugging Face token from: https://huggingface.co/settings/tokens
 
@@ -116,18 +121,15 @@ streamlit run test1.py
 ```
 Navigate to `http://localhost:8501` in your browser.
 
-#### Vercel Deployment
-The landing page is deployed on Vercel for easy sharing:
-```bash
-vercel --prod
-```
-
-#### Streamlit Cloud Deployment
-For the full interactive app, deploy to Streamlit Cloud:
+#### Streamlit Cloud Deployment (Recommended)
 1. Fork this repository
 2. Go to [share.streamlit.io](https://share.streamlit.io)
 3. Connect your GitHub repository
 4. Deploy `test1.py` as the main file
+5. Add your Hugging Face token in the Secrets section:
+   ```toml
+   HF_TOKEN = "your_token_here"
+   ```
 
 ## 📖 Usage Guide
 

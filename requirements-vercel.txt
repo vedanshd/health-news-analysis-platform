@@ -1,2 +1,0 @@
-# Minimal requirements for Vercel deployment (landing page only)
-flask>=2.3.0
