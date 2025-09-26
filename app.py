@@ -1,7 +1,11 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, jsonify
 import os
+import sys
 
 app = Flask(__name__)
+
+# Lightweight Flask app for Vercel deployment
+# This is a landing page only - the full app runs on Streamlit Cloud
 
 # HTML template for the landing page
 LANDING_PAGE = """
@@ -237,8 +241,8 @@ LANDING_PAGE = """
             <a href="https://github.com/vedanshd/health-news-analysis-platform" class="btn" target="_blank">
                 📚 View Source Code
             </a>
-            <a href="https://health-news-analysis.streamlit.app" class="btn secondary" target="_blank">
-                🚀 Try Live Demo
+            <a href="/demo" class="btn secondary">
+                🚀 Setup Instructions
             </a>
         </div>
         
@@ -286,16 +290,94 @@ def home():
     """Landing page for the Health News Analysis Platform"""
     return render_template_string(LANDING_PAGE)
 
+@app.route('/demo')
+def demo():
+    """Demo setup instructions"""
+    return render_template_string("""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Demo Setup - Health News Analysis Platform</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 20px;
+                line-height: 1.6;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                background: rgba(255, 255, 255, 0.1);
+                padding: 40px;
+                border-radius: 15px;
+                backdrop-filter: blur(10px);
+            }
+            .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                background: #4CAF50;
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                margin: 10px 0;
+            }
+            .code {
+                background: rgba(0,0,0,0.3);
+                padding: 15px;
+                border-radius: 8px;
+                margin: 10px 0;
+                font-family: monospace;
+                overflow-x: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🚀 Run the Full Application</h1>
+            
+            <h2>Option 1: Local Setup (Recommended)</h2>
+            <div class="code">
+                git clone https://github.com/vedanshd/health-news-analysis-platform.git<br>
+                cd health-news-analysis-platform<br>
+                pip install -r requirements.txt<br>
+                cp .env.example .env<br>
+                # Add your Hugging Face token to .env<br>
+                streamlit run test1.py
+            </div>
+            
+            <h2>Option 2: Streamlit Cloud</h2>
+            <p>Deploy to Streamlit Cloud for free hosting:</p>
+            <ol>
+                <li>Fork the GitHub repository</li>
+                <li>Go to <a href="https://share.streamlit.io" style="color: #FFD700;">share.streamlit.io</a></li>
+                <li>Connect your GitHub account</li>
+                <li>Deploy using <code>test1.py</code> as main file</li>
+                <li>Add your Hugging Face token in secrets</li>
+            </ol>
+            
+            <h2>🔑 Get Hugging Face Token</h2>
+            <p>Visit <a href="https://huggingface.co/settings/tokens" style="color: #FFD700;">huggingface.co/settings/tokens</a> to get your free API token.</p>
+            
+            <a href="/" class="btn">← Back to Home</a>
+            <a href="https://github.com/vedanshd/health-news-analysis-platform" class="btn">View on GitHub</a>
+        </div>
+    </body>
+    </html>
+    """)
+
 @app.route('/health')
 def health():
     """Health check endpoint"""
-    return {
+    return jsonify({
         "status": "healthy",
         "app": "Advanced Health News Analysis Platform",
         "version": "1.0.0",
-        "github": "https://github.com/vedanshd/health-news-analysis-platform",
-        "streamlit_demo": "https://health-news-analysis.streamlit.app"
-    }
+        "github": "https://github.com/vedanshd/health-news-analysis-platform"
+    })
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

@@ -1,0 +1,17 @@
+# Ignore heavy files and dependencies for Vercel deployment
+test1.py
+.env
+.venv/
+__pycache__/
+*.pyc
+database.csv
+.streamlit/
+packages.txt
+*.log
+.DS_Store
+
+# Keep only essential files for landing page
+# app.py (Flask landing page)
+# requirements-vercel.txt (minimal deps)
+# runtime.txt
+# vercel.json
