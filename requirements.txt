@@ -22,6 +22,7 @@ beautifulsoup4>=4.12.0
 # Visualization
 plotly>=5.15.0
 matplotlib>=3.7.0
+seaborn>=0.12.0
 wordcloud>=1.9.0
 
 # API Integration
@@ -39,6 +40,3 @@ spacy>=3.6.0
 
 # Additional utilities
 tqdm>=4.65.0
-
-# Web Framework for Vercel deployment
-flask>=2.3.0
